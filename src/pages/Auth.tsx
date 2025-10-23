@@ -3,9 +3,16 @@ import { Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useNavigate } from "react-router-dom";
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -22,7 +29,7 @@ export default function Auth() {
             {isLogin ? "Login" : "Sign Up"}
           </h2>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             {!isLogin && (
               <>
                 <div>
