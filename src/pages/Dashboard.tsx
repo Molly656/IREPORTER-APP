@@ -1,8 +1,6 @@
 import { Flag, LogOut, Grid3x3, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const records = [
   {
@@ -28,22 +26,6 @@ const records = [
 ];
 
 export default function Dashboard() {
-  const navigate = useNavigate();
-  const { toast } = useToast();
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
-    } else {
-      navigate("/");
-    }
-  };
-
   return (
     <div className="flex min-h-screen">
       <aside className="w-64 bg-sidebar border-r border-sidebar-border p-6">
@@ -83,10 +65,7 @@ export default function Dashboard() {
             <span>Interventions</span>
           </Link>
 
-          <button 
-            onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sidebar-accent text-foreground w-full"
-          >
+          <button className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sidebar-accent text-foreground w-full">
             <LogOut size={20} />
             <span>Logout</span>
           </button>
