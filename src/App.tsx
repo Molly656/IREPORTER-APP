@@ -25,7 +25,6 @@ const App = () => (
           <Route path="/create" element={<CreateReport />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminDashboard />} />
-          <Route path="/admin/settings" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
