@@ -14,6 +14,11 @@ export default function Auth() {
     navigate("/dashboard");
   };
 
+  const handleAdminLogin = () => {
+    // Mock admin login - just navigate to admin dashboard
+    navigate("/admin");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -98,6 +103,17 @@ export default function Auth() {
               </button>
             </p>
           </form>
+
+          <div className="mt-6 pt-6 border-t border-border">
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full"
+              onClick={handleAdminLogin}
+            >
+              Login as Admin
+            </Button>
+          </div>
         </div>
       </div>
     </div>
