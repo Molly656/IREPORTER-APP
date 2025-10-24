@@ -1,6 +1,6 @@
 import { Flag, LogOut, Grid3x3, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const records = [
   {
@@ -26,6 +26,12 @@ const records = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   return (
     <div className="flex min-h-screen">
       <aside className="w-64 bg-sidebar border-r border-sidebar-border p-6">
@@ -65,7 +71,10 @@ export default function Dashboard() {
             <span>Interventions</span>
           </Link>
 
-          <button className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sidebar-accent text-foreground w-full">
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-sidebar-accent text-foreground w-full"
+          >
             <LogOut size={20} />
             <span>Logout</span>
           </button>
