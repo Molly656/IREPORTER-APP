@@ -34,3 +34,38 @@ Admins can update the status of these records, ensuring accountability and trans
 ---
 
 ## Project Structure
+Backend entry: server.ts
+Backend routes: routes.ts
+Controllers: backend/Controllers/*.ts 
+(authController.ts, redFlagsController.ts, interventionsController.ts)
+Multer config: multer.ts
+DB init script: init.sql
+Frontend entry: main.tsx
+Frontend API client: api.ts
+Frontend pages:
+CreateReport.tsx
+RedFlags.tsx
+Interventions.tsx
+Auth.tsx
+AdminDashboard.tsx
+Shared types: report.ts and types.ts
+Local storage helpers: storage.ts
+
+#Running it Locally (dev)
+Backend:
+Ensure .env set with PORT, DB_*, JWT_SECRET.
+Commands (in backend):
+Install: npm install
+Run dev: npm run dev or npm run start (project-specific script — confirm package.json).
+Ensure DB exists and init.sql applied or run the SQL to create tables.
+Frontend:
+From frontend:
+Install: npm install
+Run dev: npm run dev (Vite)
+Frontend dev port default used in config is 3001 (or 3002 if 3001 busy). Confirm vite.config.ts.
+Environment:
+Set VITE_API_URL in .env to backend base, e.g.:
+VITE_API_URL=http://localhost:3000/api
+Quick commands (PowerShell-friendly):
+Backend:
+cd to backend and:
