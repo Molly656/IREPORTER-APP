@@ -65,19 +65,47 @@ export function NotificationBell() {
           <div className="p-2 border-b font-semibold">Notifications</div>
           <div className="max-h-64 overflow-auto">
             {unreadNotifications.length === 0 && (
-              <div className="p-3 text-sm text-muted-foreground">No unread notifications</div>
+              <div className="p-3 text-sm text-muted-foreground">
+                No unread notifications
+              </div>
             )}
             {unreadNotifications.map((n) => (
               <div key={n.id} className={`p-3 text-sm border-b bg-gray-50`}>
-                <div className="font-medium">{n.title || 'Update'}</div>
+                <div className="font-medium">{n.title || "Update"}</div>
                 <div className="text-xs text-muted-foreground">{n.message}</div>
-                <div className="text-[10px] text-muted-foreground mt-1">{new Date(n.created_at).toLocaleString()}</div>
+                <div className="text-[10px] text-muted-foreground mt-1">
+                  {new Date(n.created_at).toLocaleString()}
+                </div>
               </div>
             ))}
           </div>
-          <div className="p-2 text-right">
-            <button className="text-xs text-primary-foreground" onClick={markAllAsRead}>Mark all read</button>
-            <button className="text-xs ml-4 text-primary-foreground" onClick={() => navigate('/notifications')}>View all</button>
+          <div className="p-2 flex justify-center space-x-4">
+            <button
+              style={{
+                backgroundColor: "#dc2626",
+                color: "white",
+                padding: "0.25rem 0.5rem",
+                borderRadius: "0.5rem",
+                fontSize: "0.875rem",
+                transition: "background-color 0.2s",
+              }}
+              onClick={markAllAsRead}
+            >
+              Mark all read
+            </button>
+            <button
+              style={{
+                backgroundColor: "#dc2626",
+                color: "white",
+                padding: "0.25rem 0.5rem",
+                borderRadius: "0.5rem",
+                fontSize: "0.875rem",
+                transition: "background-color 0.2s",
+              }}
+              onClick={() => navigate("/notifications")}
+            >
+              View all
+            </button>
           </div>
         </div>
       )}
