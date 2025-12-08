@@ -1,13 +1,6 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext,useContext, useState,useEffect,ReactNode,} from "react";
 import { storage } from "@/utils/storage";
 
-// ✅ User interface with guaranteed name & role
 export interface User {
   id: string;
   first_name: string;
@@ -22,21 +15,18 @@ export interface User {
   role: "admin" | "user"; // always present
 }
 
-interface UserContextType {
-  user: User | null;
+interface UserContextType { user: User | null;
   setUser: (user: User | null) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const useUser = () => {
-  const context = useContext(UserContext);
+export const useUser = () => { const context = useContext(UserContext);
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };
-
 interface UserProviderProps {
   children: ReactNode;
 }
@@ -44,7 +34,6 @@ interface UserProviderProps {
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUserState] = useState<User | null>(null);
 
-  // Load user from storage on mount
   useEffect(() => {
     const currentUser = storage.getCurrentUser();
     if (currentUser) {
