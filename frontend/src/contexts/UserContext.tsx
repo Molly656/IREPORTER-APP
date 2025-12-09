@@ -11,8 +11,8 @@ export interface User {
   created_at: string;
   updated_at: string;
 
-  name: string; // always present
-  role: "admin" | "user"; // always present
+  name: string; 
+  role: "admin" | "user"; 
 }
 
 interface UserContextType { user: User | null;
